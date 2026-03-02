@@ -1,0 +1,16 @@
+---
+import Artist from "../components/Artist.astro";
+
+const response = await fetch("http://localhost:3000/artists");
+const artists = await response.json();
+
+---
+<section class="p-4 m-auto max-w-[800px]">
+    <h2 class="text-3xl mb-5">Artists</h2>
+
+    <div class="flex flex-row flex-wrap gap-3">
+        { artists.map(artista => <Artist name={artista.name}></Artist>) }
+    </div>
+
+
+</section>
