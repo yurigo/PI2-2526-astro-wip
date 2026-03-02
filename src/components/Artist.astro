@@ -1,11 +1,16 @@
 ---
 //const name = Astro.props.name;
-const {name} = Astro.props;
+const {id, name} = Astro.props;
+
+const response = await fetch(`http://localhost:3000/artists/${id}/songs`);
+const songs = await response.json();
+
 ---
 
-<div class="border max-w-[180px] rounded-2xl p-4 bg-pink-300">
+<div class="border max-w-[180px] rounded-2xl p-4 bg-pink-300 relative hover:-translate-y-1 cursor-pointer transition-all active:translate-y-0.5">
     <h2 class="text-2xl mb-2">{name}</h2>
-    <p>
-        Lorem ipsum dolor sit amet.
-    </p>
+    <ul>
+        { songs.map(s => <li>{s.name}</li>) }
+    </ul>
+    <div class=" absolute bg-pink-200 rounded-4xl w-6 h-6 grid place-content-center bottom-1.5 right-1.5 text-xs text-pink-700 border border-pink-700">{id}</div>
 </div>

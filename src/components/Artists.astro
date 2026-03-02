@@ -9,7 +9,7 @@ const artists = await response.json();
     <h2 class="text-3xl mb-5">Artists</h2>
 
     <div class="flex flex-row flex-wrap gap-3">
-        { artists.map(artista => <Artist name={artista.name}></Artist>) }
+        { artists.map(artista => <Artist id={artista.id} name={artista.name}></Artist>) }
     </div>
 
 
